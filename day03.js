@@ -10,31 +10,15 @@ function day03(incY,incX){
     let y = 0
     let x = 0
     while(y<height-1){
-        let p
-        if((x+incX)<minWidth){
-            y+=incY
-            x+=incX
-            p = data[y][x] 
-        }else{
-            y+=incY 
-            x= (x+incX)%minWidth
-            p = data[y][x]       
-        }
-        p == "#" ? count++ : undefined
+        (x+incX)<minWidth ? (y+=incY,x+=incX) : (y+=incY,x= (x+incX)%minWidth)
+        data[y][x] == "#" ? count++ : undefined
     }
     return count
 }
 
 let pOne = day03(1,3)
-let pTwo = pOne
-
-for(let i=0;i<partTwo.length;i++){
-    let [y,x] = partTwo[i]
-    pTwo*=day03(y,x)
-}
-
 console.log("Part one = " +pOne)
-console.log("Part two = " +pTwo)
+console.log("Part two = " +partTwo.map(el=>day03(el[0],el[1])).reduce((a,b) =>a*b)*pOne)
 
 
 
