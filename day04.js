@@ -37,12 +37,10 @@ for(let i=0;i<data.length;i++){
                 last=="cm" ? number>=150 && number<=193 ?  undefined : n-- : number>=59 && number<=76 ?  undefined : n--
                 break
             case 'hcl':
-                let hash = next[0] == '#'
                 let r = next.slice(1)
-                let length = r.length==6
                 let regL = /([g-z])\w/g
                 let lett = r.match(regL)
-                hash && length && lett==null ? undefined : n--
+                next[0] == '#' && r.length==6 && lett==null ? undefined : n--
                 break
             case 'ecl':
                 colors.indexOf(next)==-1 ? n-- : undefined
