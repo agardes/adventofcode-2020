@@ -29,7 +29,7 @@ while(!finished){
                 loop+=i
                 pOne = acc
             }
-            p.push(i)
+            !check ? p.push(i) : undefined
             break
         case 'nop':
             i++
