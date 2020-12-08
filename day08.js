@@ -16,19 +16,8 @@ while(!finished){
             break
         case 'jmp':
             i+=n
-            if(check){
-                loop+="-"+i
-                if(loop.length==oldLoop.length){
-                    console.log("Part one = " +pOne)
-                    finished = true
-                }
-            }
-            if(p.indexOf(i)>-1 && !check){
-                oldLoop = p.slice(p.indexOf(i)).join('-')
-                check = true
-                loop+=i
-                pOne = acc
-            }
+            check ? (loop+="-"+i, loop.length==oldLoop.length ? (console.log("Part one = " +pOne), finished = true) : undefined) 
+                  : p.indexOf(i)>-1 ? (oldLoop = p.slice(p.indexOf(i)).join('-'), check = true, loop+=i, pOne = acc) : undefined
             !check ? p.push(i) : undefined
             break
         case 'nop':
