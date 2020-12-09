@@ -1,6 +1,6 @@
 const fs = require('fs');
 const read = fs.readFileSync("day08.txt");
-let data = read.toString().split('\n').map(el=>el.split(' ').map(el=>el.split(' ')).flat())
+let data = read.toString().split('\n').map(el=>el.split(' '))
 let i = acc = 0
 let finished = check = false
 let loop = oldLoop = ""
@@ -53,6 +53,4 @@ for(let u=0;u<ind.length;u++){
         }
     }
 }
-
-
 
