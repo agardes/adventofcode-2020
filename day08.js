@@ -6,6 +6,7 @@ let finished = check = false
 let loop = oldLoop = ""
 let p = []
 let pOne
+
 while(!finished){
     let [inst,n] = data[i]
     n=parseInt(n)
