@@ -20,7 +20,9 @@ const day11 = {
                                x!==0 && y!==data.length-1 ? data[y+1][x-1] : "L",
                                x!==data[0].length && y!==data.length-1? data[y+1][x+1] : "L"
                               ].filter(el=>el=='#') : checkSeats(y,x,data)
-                    el=='L' && c.length==0 || el=='L' && c==0 ? (newData[y][x] = "#", k=true) : (el=='#' && c.length>=4 && part=="one") || (el=='#' && c>=5 && part=="two") ? 
+
+                    el=='L' && c.length==0 || el=='L' && c==0 ? (newData[y][x] = "#", k=true) : 
+                    (el=='#' && c.length>=4 && part=="one") || (el=='#' && c>=5 && part=="two") ? 
                     (newData[y][x] = "L",k=true) : undefined
                 }    
             }
