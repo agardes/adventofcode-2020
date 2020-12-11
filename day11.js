@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const read = fs.readFileSync("day11.txt");
 let data = read.toString().split('\n').map(el=>el.split(''))
@@ -39,6 +40,9 @@ while(searching){
     for(let y=0;y<dataP2.length;y++){
         for(let x=0;x<dataP2[0].length;x++){
             let el = dataP2[y][x]
+            if(el=="."){
+                continue
+            }
             let c = checkSeats(y,x,dataP2)
             el=='L' && c==0 ? ( newData[y][x] = "#", order+=y+"-"+x+"-") : el=='#' && c>=5 ?   newData[y][x] = "L" : undefined            
         }     
@@ -131,4 +135,3 @@ function checkSeats(baseY,baseX,data){
     }
     return c
 }
-
