@@ -20,8 +20,8 @@ for(let i=0;i<data.length;i++){
     if(data[i].length==36){
         mask = data[i]
     }else{
-        let val = data[i][1].toString(2).split('').join('')
-        let add = data[i][0].toString(2).split('').join('')
+        let val = data[i][1].toString(2)
+        let add = data[i][0].toString(2)
         val = "000000000000000000000000000000000000".substr(val.length) + val;
         add = "000000000000000000000000000000000000".substr(add.length) + add;
         let res = ""
@@ -64,7 +64,6 @@ function getAdresses(str, arr, l){
 let pOne = pTwo = 0
 for (const [k, value] of Object.entries(mem)) { pOne+=value }
 for (const [k, value] of Object.entries(mem2)) { pTwo+=value }
-
 
 console.log("Part one = " + pOne)
 console.log("Part two = " + pTwo)
