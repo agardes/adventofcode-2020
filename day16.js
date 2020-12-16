@@ -12,6 +12,7 @@ let rules = data.slice(0,data.indexOf('')).map(el=>el.split(':')).map(el=>{
 let rulesPone = rules.map(el=>{return [el[1],el[2]]}).flat()
 let tickets = data.slice(data.indexOf('')+5).map(el=>el.split(',').map(Number))
 
+///// Part one
 let pOne = 0
 let invalid = []
 for(let i=0;i<tickets.length;i++){ // For each billet
@@ -28,6 +29,7 @@ for(let i=0;i<tickets.length;i++){ // For each billet
 }
 console.log("Part one = " +pOne)
 
+///// Part two
 tickets =  tickets.filter((el,i)=>invalid.indexOf(i)==-1)
 tickets.push(myTicket)
 
