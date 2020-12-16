@@ -48,8 +48,7 @@ for(let i=0;i<rules.length;i++){ // For each rule
 let start 
 let k
 count.forEach((val,key,map)=>{
-    let max = Math.max(...val.values())
-    let occ = [...val.entries()].filter((e) => e[1]==max).map(el=>el[0])
+    let occ = [...val.entries()].filter((e) => e[1]==Math.max(...val.values())).map(el=>el[0])
     occ.length==1 ? (start=occ[0],k=key) :undefined
     map.set(key,occ)
 })
