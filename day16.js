@@ -30,20 +30,18 @@ console.log("Part one = " +pOne)
 
 tickets =  tickets.filter((el,i)=>invalid.indexOf(i)==-1)
 tickets.push(myTicket)
-for(let i=0;i<rules.length;i++){ // For each rule
-    let r = rules[i][1]
-    let r2 = rules[i][2]
-    for(let j=0;j<tickets.length;j++){ // For each ticket
-        for(let k=0;k<tickets[j].length;k++){ // For each ticket number
-            if((tickets[j][k]>=r[0] && tickets[j][k]<=r[1]) || (tickets[j][k]>=r2[0] && tickets[j][k]<=r2[1])){
-                let a = count.get(rules[i][0])
+
+rules.forEach(el=>{
+    tickets.forEach(ticket=>{
+        for(let k=0;k<ticket.length;k++){ 
+            if((ticket[k]>=el[1][0] && ticket[k]<=el[1][1]) || (ticket[k]>=el[2][0] && ticket[k]<=el[2][1])){
+                let a = count.get(el[0])
                 a.has(k) ? a.set(k,a.get(k)+1): a.set(k,1)
-                count.set(rules[i][0],a)
+                count.set(el[0],a)
             }
         }
-    }
-
-}
+    })
+})
 
 let start 
 let k
