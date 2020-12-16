@@ -15,18 +15,20 @@ let tickets = data.slice(data.indexOf('')+5).map(el=>el.split(',').map(Number))
 ///// Part one
 let pOne = 0
 let invalid = []
-for(let i=0;i<tickets.length;i++){ // For each billet
-    for(let k=0;k<tickets[i].length;k++){ // for each number on ticket
+tickets.forEach((ticket,i)=>{
+    for(let k=0;k<ticket.length;k++){
         let valid = false
-        for(let j=0;j<rulesPone.length;j++){ // For each rule
-            if(tickets[i][k]>=rulesPone[j][0] && tickets[i][k]<=rulesPone[j][1]){
+        rulesPone.every(rule=>{
+            if(ticket[k]>=rule[0] && ticket[k]<=rule[1]){
                 valid = true
-                break
+                return false
+            }else{
+                return true
             }
-        }
-        valid==false?(invalid.push(i),pOne+=tickets[i][k]) : undefined  
+        })
+        valid==false?(invalid.push(i),pOne+=ticket[k]) : undefined  
     }
-}
+})
 console.log("Part one = " +pOne)
 
 ///// Part two
