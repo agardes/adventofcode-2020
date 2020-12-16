@@ -78,22 +78,3 @@ function recursive(map,pos,k){
 
 }
 console.log("Part two = " +partTwo)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
