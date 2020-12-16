@@ -56,13 +56,9 @@ count.forEach((val,key,map)=>{
 
 let done = []
 let partTwo = recursive(count,start,k)
+
 function recursive(map,pos,k){
-        map.forEach((val,key,map)=>{
-            if(key!==k){
-                let v = val.filter(el=>el!==pos)
-                map.set(key,v)
-            }
-        })   
+    map.forEach((val,key,map)=>{ key!==k ? map.set(key,val.filter(el=>el!==pos)):undefined})   
     done.push(k)
     let single = [...map.entries()].filter(el=>el[1].length==1 && done.indexOf(el[0])==-1)
     if(single==0){
