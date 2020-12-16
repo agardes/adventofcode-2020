@@ -60,7 +60,7 @@ function recursive(map,pos,k){
     map.forEach((val,key,map)=>{ key!==k ? map.set(key,val.filter(el=>el!==pos)):undefined})   
     done.push(k)
     let single = [...map.entries()].find(el=>el[1].length==1 && done.indexOf(el[0])==-1)
-    if(single==undefined){
+    if(!single){
         let r = tickets[tickets.length-1]
         return  r[map.get('departure location')[0]]*r[map.get('departure station')[0]]*r[map.get('departure platform')[0]]
                 *r[map.get('departure track')[0]]*r[map.get('departure date')[0]]*r[map.get('departure time')[0]]
