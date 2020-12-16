@@ -32,6 +32,9 @@ console.log("Part one = " +pOne)
 ///// Part two
 tickets =  tickets.filter((el,i)=>invalid.indexOf(i)==-1)
 tickets.push(myTicket)
+let start 
+let k
+let done = []
 
 rules.forEach(el=>{
     tickets.forEach(ticket=>{
@@ -45,16 +48,11 @@ rules.forEach(el=>{
     })
 })
 
-let start 
-let k
 count.forEach((val,key,map)=>{
     let occ = [...val.entries()].filter((e) => e[1]==Math.max(...val.values())).map(el=>el[0])
     occ.length==1 ? (start=occ[0],k=key) :undefined
     map.set(key,occ)
 })
-
-let done = []
-let partTwo = recursive(count,start,k)
 
 function recursive(map,pos,k){
     map.forEach((val,key,map)=>{ key!==k ? map.set(key,val.filter(el=>el!==pos)):undefined})   
@@ -72,4 +70,4 @@ function recursive(map,pos,k){
     }
 
 }
-console.log("Part two = " +partTwo)
+console.log("Part two = " + recursive(count,start,k))
