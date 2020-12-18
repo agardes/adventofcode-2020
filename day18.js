@@ -16,8 +16,7 @@ const day18 = {
                     key = parseInt(key)
                     let p = k.slice(key+1,value)
                     if(p.indexOf('(')==-1){
-                         let x = parse(p,part)
-                         m.splice(key-last,p.length+2,x)
+                         m.splice(key-last,p.length+2,parse(p,part))
                          last += p.length+1
                     }
                   }
