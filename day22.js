@@ -30,14 +30,13 @@ const day22 = {
         console.log("Part one = " +pOne)
     },
     partTwo(){
-        let gamePlayed = 1
         let winDeck
-        game(1,0,saveP1,saveP2,[],[])
+        game(0,saveP1,saveP2,[],[])
         let pTwo = 0
         winDeck.reverse().forEach((el,i)=>{ pTwo+=el*((i+1)) })
         console.log("Part two = " +pTwo)
 
-        function game(id,round,player1,player2,past1,past2){
+        function game(round,player1,player2){
             player1=[...player1]
             player2=[...player2]
             let playing = true
@@ -57,10 +56,9 @@ const day22 = {
                 let c1 = player1.shift()
                 let c2 = player2.shift()
                 if(c1<=player1.length && c2<=player2.length){
-                    gamePlayed++
                     player1C = [...player1].slice(0,c1)
                     player2C = [...player2].slice(0,c2)
-                    winner = game(gamePlayed,0,player1C,player2C,past1,past2)
+                    winner = game(0,player1C,player2C)
                     winner=='player1' ? player1 = [...player1,c1,c2] : player2 = [...player2,c2,c1] 
                     if(player1.length==0 || player2.length==0){
                         playing = false
@@ -83,7 +81,5 @@ const day22 = {
 }
 
 day22.partOne()
-console.time('T')
 day22.partTwo()
-console.timeEnd('T')
 
