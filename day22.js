@@ -42,7 +42,8 @@ const day22 = {
             player2=[...player2]
             let playing = true
             let winner
-            let prev1 = prev2 = []
+            let prev1 = []
+            let prev2 = []
             while(playing){
                 let p1 = player1.join('-')
                 let p2 = player2.join('-')
@@ -82,5 +83,7 @@ const day22 = {
 }
 
 day22.partOne()
+console.time('T')
 day22.partTwo()
+console.timeEnd('T')
 
