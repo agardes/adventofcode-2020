@@ -14,7 +14,6 @@ let saveP1 = [...player1]
 let saveP2 = [...player2]
 const day22 = {
     partOne(){
-        let pOne = 0
         let playing = true
         let winner
         while(playing){
@@ -23,18 +22,15 @@ const day22 = {
             c1>c2 ? player1 = [...player1,c1,c2] :  player2 = [...player2,c2,c1]  
             if(player1.length==0 || player2.length==0){
                 playing = false
-                winner = player1.length==0 ? player2 : player1
+                winner = player1 || player2
             }
         }
-        winner.reverse().forEach((el,i)=>{ pOne+=el*((i+1)) })
-        console.log("Part one = " +pOne)
+        console.log("Part one = ", winner.reduce((t,el,i)=>t+el*(winner.length-i),0));
     },
     partTwo(){
         let winDeck
         game(0,saveP1,saveP2,[],[])
-        let pTwo = 0
-        winDeck.reverse().forEach((el,i)=>{ pTwo+=el*((i+1)) })
-        console.log("Part two = " +pTwo)
+        console.log("Part one = ", winDeck.reduce((t,el,i)=>t+el*(winDeck.length-i),0));
 
         function game(round,player1,player2){
             player1=[...player1]
@@ -56,20 +52,20 @@ const day22 = {
                 let c1 = player1.shift()
                 let c2 = player2.shift()
                 if(c1<=player1.length && c2<=player2.length){
-                    player1C = [...player1].slice(0,c1)
-                    player2C = [...player2].slice(0,c2)
+                    player1C = player1.slice(0,c1)
+                    player2C = player2.slice(0,c2)
                     winner = game(0,player1C,player2C)
-                    winner=='player1' ? player1 = [...player1,c1,c2] : player2 = [...player2,c2,c1] 
+                    winner=='player1' ? player1.push(c1,c2) : player2.push(c2,c1)
                     if(player1.length==0 || player2.length==0){
                         playing = false
-                        player1.length==0  ? winDeck=player2 : winDeck=player1
+                        winDeck = player1 || player2
                         return player1.length==0 ? "player2" : "player1"    
                     }
                 }else{
-                    c1>c2 ? player1 = [...player1,c1,c2] :  player2 = [...player2,c2,c1]  
+                    c1>c2 ? player1.push(c1,c2) : player2.push(c2,c1)
                     if(player1.length==0 || player2.length==0){
                         playing = false
-                        player1.length==0 ? winDeck=player2 : winDeck=player1
+                        winDeck = player1 || player2
                         return player1.length==0 ? "player2" : "player1"    
                     }
                 }
@@ -79,7 +75,7 @@ const day22 = {
         
     }
 }
-
 day22.partOne()
 day22.partTwo()
+
 
