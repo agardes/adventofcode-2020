@@ -5,15 +5,8 @@ let player2 = []
 let o = false
 let data = read.toString().split('\r\n').forEach(el=>{
     if(el.length<3 && el!==''){
-
-        if(o){
-            player2.push(parseInt(el))
-        }else{
-            player1.push(parseInt(el))            
-        }
-
-    }else
-    if(el==''){
+    o ? player2.push(parseInt(el)) :  player1.push(parseInt(el))   
+    }else if(el==''){
         o = true
     }
 })
